@@ -1,0 +1,15 @@
+/* For Headeng */
+/* font-family: 'Emilys Candy', cursive;  */
+
+/* For Paragraph */
+/* font-family: 'Source Code Pro', monospace; */
+body {
+  background-color: #eae6da;
+}
+h2 {
+  font-family: "Emilys Candy", cursive;
+  color: #e15546;
+  text-shadow: 2px 2px 2px #ce5937;
+}
+
+/* https://techy-fun.web.app/ */
