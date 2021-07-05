@@ -19,7 +19,7 @@ const BlogDetaills = () => {
       <div className="md:container md:mx-auto md:px-4">
         <div className=" grid grid-cols-1 md:grid-cols-1 justify-items-center inset-x-12 pb-20">
           <div className="  mx-28 mt-10">
-            <h3 className="text-left text-5xl font-semibold leading-snug border-b-2 border-indigo-900 pb-2">
+            <h3 className="md:text-left text-4xl font-bold md:leading-snug border-b-2 border-indigo-900 pb-2">
               {bl?.heading}.
             </h3>
             {/* <h4 className="">${heading}</h4> */}
@@ -50,8 +50,8 @@ const BlogDetaills = () => {
             />
           </div>
 
-          <div className="mx-32 ">
-            <article className="leading-relaxed text-justify font-normal ">
+          <div className="md:mx-32 mt-5">
+            <article className="leading-relaxed text-justify font-normal px-6 ">
               {bl?.content}
             </article>
           </div>

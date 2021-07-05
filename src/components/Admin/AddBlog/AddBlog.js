@@ -68,7 +68,7 @@ const AddBlog = () => {
                 onSubmit={handleSubmit(onSubmit)}
               >
                 <div className="flex flex-wrap -mx-3 mb-6">
-                  <div className="w-full px-3">
+                  <div className="md:w-full md:px-3">
                     <label className="block uppercase tracking-wide text-red-600 text-xs font-bold mb-2">
                       Headline
                     </label>

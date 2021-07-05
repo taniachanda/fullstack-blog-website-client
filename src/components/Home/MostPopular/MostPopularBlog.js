@@ -15,7 +15,7 @@ const MostPopularBlog = ({ blog }) => {
             style={{ height: "200px" }}
             width={1920}
             src={blog.icon}
-            alt="Sunset in the mountains"
+            alt={blog.heading}
           />
           <div
             className="flex justify-between font-semibold text-white-900  text-lg px-3 py-2"

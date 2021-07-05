@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from "./firebase.config";
 import { UserContext } from "./../../App";
 import { Link, useHistory, useLocation } from "react-router-dom";
-// import HeaderNavbar from "./../HeaderNavbar/HeaderNavbar";
 import HeaderNavbar from "./../Home/HeaderNavbar/HeaderNavbar";
 
 if (firebase.apps.length === 0) {
@@ -12,7 +11,7 @@ if (firebase.apps.length === 0) {
 }
 
 const SignIn = () => {
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const [setLoggedInUser] = useContext(UserContext);
 
   // redirect purposes after login
   const history = useHistory();
@@ -147,45 +146,26 @@ const SignIn = () => {
       });
   };
 
-  // const onSubmit = (data) => {
-  //   const { name, email, password } = data;
-  //   const userData = {
-  //     name: name,
-  //     email: email,
-  //     password: password,
-  //   };
-
-  //   const url = `https://serene-everglades-14231.herokuapp.com/addUser`;
-  //   fetch(url, {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(userData),
-  //   }).then((res) => console.log("server site response", res));
-  // };
-
   return (
     <>
       <HeaderNavbar />
-      <div className="container">
-        <div className="col-span-2 mb-28">
-          <div className="text-4xl leading-4 font-extrabold text-green-900 mt-10 text-center ">
-            <h2 className=" pl-3">Sign In</h2>
+      <div className="container md:mx-auto">
+        <div className="col-span-2 mb-18 h-screen mx-3">
+          <div className="text-4xl leading-4 font-extrabold text-green-900 mt-5 text-center ">
+            <h2 className="pl-3">Log In</h2>
           </div>
-          <h2 className=" pl-3">{loggedInUser.name}</h2>
-          <div className="md:flex mt-10 pt-10  justify-center">
+          <div className="md:flex mt-5 pt-5  justify-center">
             <form
               onSubmit={handleSubmit}
               className="w-full max-w-lg self-center"
             >
-              <div className="flex flex-wrap -mx-3 mb-6">
+              <div className="md:flex flex-wrap -mx-3 mb-6">
                 {" "}
-                <h4 className="mt-2">
+                <h4 className="mt-2 self-center">
                   {option === "login" ? "Login" : "Create an account"}
                 </h4>
                 {option === "signup" && (
-                  <div className="w-full px-3">
+                  <div className="md:w-full md:px-3">
                     <label className="block uppercase tracking-wide text-red-600 text-xs font-bold mb-2">
                       Name
                     </label>
@@ -245,7 +225,7 @@ const SignIn = () => {
                   </div>
                 )}
                 {option === "login" && (
-                  <div className="d-flex justify-content-between align-items-baseline">
+                  <div className="flex justify-content-between align-items-baseline">
                     <div>
                       <input type="checkbox" id="exampleCheck1" />
                       <label className="ml-2 mt-3" htmlFor="exampleCheck1">
@@ -268,7 +248,7 @@ const SignIn = () => {
                     Submit
                   </button>
                 </div>
-                <div className="d-flex justify-content-center align-items-baseline">
+                <div className="flex justify-content-center align-items-baseline">
                   <p className="text-center mt-3 mr-2">
                     {option === "login"
                       ? "Don't have an account? "
@@ -288,19 +268,25 @@ const SignIn = () => {
             </form>
           </div>
           <p>or</p>
-          <button
-            onClick={handleSignIn}
-            type="button"
-            className="btn btn-outline-secondary"
-          >
-            Continue with Google
-          </button>
-          <p style={{ color: "red" }}>{user.error}</p>
-          {user.success && (
-            <p style={{ color: "green" }}>
-              User {option === "login" ? "logged In" : "created"} successfully
-            </p>
-          )}
+          <div className="col-span-2">
+            <div className="w-full px-3 ">
+              <button
+                onClick={handleSignIn}
+                type="button"
+                className="max-w-lg text-white bg-gradient-to-r from-red-200 to-red-700 hover:from-red-700 hover:to-yellow-50 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+              >
+                Continue with Google
+              </button>
+              <p style={{ color: "red" }}>{user.error}</p>
+              {user.success && (
+                <p style={{ color: "green" }}>
+                  User {option === "login" ? "logged In" : "created"}{" "}
+                  successfully
+                </p>
+              )}
+              {/* </div> */}
+            </div>
+          </div>
         </div>
       </div>
     </>
