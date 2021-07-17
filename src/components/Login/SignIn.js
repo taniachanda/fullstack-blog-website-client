@@ -5,13 +5,14 @@ import firebaseConfig from "./firebase.config";
 import { UserContext } from "./../../App";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import HeaderNavbar from "./../Home/HeaderNavbar/HeaderNavbar";
+// import { FcGoogle } from "react-icons/fc";
 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
 
 const SignIn = () => {
-  const [setLoggedInUser] = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
   // redirect purposes after login
   const history = useHistory();
@@ -151,19 +152,17 @@ const SignIn = () => {
       <HeaderNavbar />
       <div className="container md:mx-auto">
         <div className="col-span-2 mb-18 h-screen mx-3">
-          <div className="text-4xl leading-4 font-extrabold text-green-900 mt-5 text-center ">
-            <h2 className="pl-3">Log In</h2>
-          </div>
           <div className="md:flex mt-5 pt-5  justify-center">
             <form
               onSubmit={handleSubmit}
               className="w-full max-w-lg self-center"
             >
               <div className="md:flex flex-wrap -mx-3 mb-6">
-                {" "}
-                <h4 className="mt-2 self-center">
-                  {option === "login" ? "Login" : "Create an account"}
-                </h4>
+                <div className="text-4xl leading-4 font-extrabold text-green-900 mt-5 mb-5 text-center ">
+                  <h2 className="pl-3">
+                    {option === "login" ? "Login" : "Create an account"}
+                  </h2>
+                </div>{" "}
                 {option === "signup" && (
                   <div className="md:w-full md:px-3">
                     <label className="block uppercase tracking-wide text-red-600 text-xs font-bold mb-2">
@@ -176,7 +175,6 @@ const SignIn = () => {
                       placeholder="Name"
                       name="name"
                     />
-                    {/* <p className='text-danger mb-0'>{errors.headline && '* This field is required'}</p> */}
                   </div>
                 )}
               </div>
@@ -192,7 +190,6 @@ const SignIn = () => {
                     placeholder="email"
                     name="email"
                   />
-                  {/* <p className='text-danger mb-0'>{errors.inline && '* This field is required'}</p> */}
                 </div>
               </div>
               <div className="flex flex-wrap -mx-3 mb-6">
@@ -207,7 +204,6 @@ const SignIn = () => {
                     placeholder="password"
                     name="password"
                   />
-                  {/* <p className='text-danger mb-0'>{errors.inline && '* This field is required'}</p> */}
                 </div>
                 {option === "signup" && (
                   <div className="w-full px-3">
@@ -226,14 +222,14 @@ const SignIn = () => {
                 )}
                 {option === "login" && (
                   <div className="flex justify-content-between align-items-baseline">
-                    <div>
+                    <div className="pt-5">
                       <input type="checkbox" id="exampleCheck1" />
                       <label className="ml-2 mt-3" htmlFor="exampleCheck1">
                         Remember me
                       </label>
                     </div>
                     <Link to="/forgetPassword">
-                      <p className="text-danger">Forgot Password</p>
+                      <p className="text-red-500 ml-24 pt-5">Forgot Password</p>
                     </Link>
                   </div>
                 )}
@@ -249,11 +245,11 @@ const SignIn = () => {
                   </button>
                 </div>
                 <div className="flex justify-content-center align-items-baseline">
-                  <p className="text-center mt-3 mr-2">
+                  <h4 className="text-center mt-3 mr-2">
                     {option === "login"
                       ? "Don't have an account? "
                       : "Already have an account? "}{" "}
-                  </p>
+                  </h4>
                   <p
                     onClick={() =>
                       option === "login"
@@ -267,15 +263,18 @@ const SignIn = () => {
               </div>
             </form>
           </div>
-          <p>or</p>
+          <p div className=" text-center">
+            or
+          </p>
           <div className="col-span-2">
-            <div className="w-full px-3 ">
+            <div className="w-full  text-center">
               <button
                 onClick={handleSignIn}
                 type="button"
-                className="max-w-lg text-white bg-gradient-to-r from-red-200 to-red-700 hover:from-red-700 hover:to-yellow-50 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                className="max-w-lg w-full text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-green-700 hover:to-green-300 font-bold uppercase text-sm px-12 py-4 rounded shadow hover:shadow-lg outline-none focus:outline-none  ease-linear transition-all duration-150"
               >
-                Continue with Google
+                {/* <FcGoogle size="2em" className="pt-3" /> */}
+                <span>Continue with Google</span>
               </button>
               <p style={{ color: "red" }}>{user.error}</p>
               {user.success && (
